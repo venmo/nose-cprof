@@ -58,6 +58,9 @@ class Profile(Plugin):
         def run_and_profile(result, prof=self.prof, test=test):
             prof.runcall(test, result)
             prof.dump_stats(self.pfile_name)
+
+        test.test._profiler = self.prof
+
         return run_and_profile
 
     def finalize(self, result):
